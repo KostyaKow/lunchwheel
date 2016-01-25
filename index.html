@@ -32,13 +32,16 @@
    <script>
       var wheelEl = makeEl('svg', {'width':500, 'height':500});
 
-      //var line = makeLine('250', '250', '300', '300');
-      //append(wheelEl, line);
+      /*
+      var line = makeLine(250, 250, 253, 253);
+      append(wheelEl, line);
 
       //var arc = internalArc(285, 185, 150, 150, 0, 1, 0, -150, 150);
       var arcArgs = {
-         'moveX'     : 285,
-         'moveY'     : 185,
+         'moveX'     : 250,
+         'moveY'     : 250,
+         'vertOrHorz': 'v',
+         'lineSize'  : -150,
          'radiusX'   : 150,
          'radiusY'   : 150,
          'rotX'      : 0,
@@ -50,13 +53,38 @@
       var arc = makeArc(arcArgs);
       append(wheelEl, arc);
 
+      var arcArgs = {
+         'moveX'     : 255,
+         'moveY'     : 255,
+         'vertOrHorz': 'h',
+         'lineSize'  : -150,
+         'radiusX'   : 150,
+         'radiusY'   : 150,
+         'rotX'      : 0,
+         'largeArc'  : 1,
+         'sweepFlag' : 0,
+         'x'         : 150,
+         'y'         : -150
+      };
+      var arc = makeArc(arcArgs); 
+      append(wheelEl, arc);*/
+
+      /* custom arc
       var attrs = {
          'fill':        'yellow',
          'stroke':      'blue',
          'stroke-width':5,
          'd':           'M 50 50 A 30,30 0 0,0 100,100 Z'
       };
+      var test = makeEl('path', attrs);
+      append(wheelEl, test); */
 
+      var attrs = {
+         'fill':        'yellow',
+         'stroke':      'blue',
+         'stroke-width':5,
+         'd':           describeArc(300, 300, 200, 30, 180)
+      };
       var test = makeEl('path', attrs);
       append(wheelEl, test);
 

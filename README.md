@@ -36,7 +36,7 @@ svg
          V y   = vertical
          A ... = arc
 arc notes
-   A radius-x,radius-y rotation-x large-arc-f,sweep-flag x y
+   A radius-x,radius-y rotation-x,large-arc-f,sweep-flag x y
       sweep-flag flip
 
 

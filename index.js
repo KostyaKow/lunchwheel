@@ -48,16 +48,40 @@ function makeArc(d) {
       'strokie-width':5
    };
    return internalArc(attrs, d['moveX'], d['moveY'],
+                     d['vertOrHorz'], d['lineSize'],
                      d['radiusX'], d['radiusY'], d['rotX'],
                      d['largeArc'], d['sweepFlag'], d['x'], d['y']);
 }
 
-function internalArc(attrs, moveX, moveY, radiusX, radiusY, rotX, largeArc, sweepFlag, x, y) {
-   var d = sprintf('M%i,%i v-150 a%i,%i %i %i,%i %i,%i z', moveX, moveY, radiusX, radiusY, rotX, largeArc, sweepFlag, x, y);
-   attrs['d'] = d;
+function internalArc(attrs, moveX, moveY, vertOrHorz, lineSize, radiusX, radiusY, rotX, largeArc, sweepFlag, x, y) {
+   var d = sprintf('M%i,%i %s%i a%i,%i %i,%i,%i %i,%i z', moveX, moveY, vertOrHorz, lineSize, radiusX, radiusY, rotX, largeArc, sweepFlag, x, y);
+   //attrs['d'] = d;
+   attrs['d'] = describeArc(300, 300, 300, 10, 90);
+
    return makeEl('path', attrs);
 }
 
 
+function polarToCartesian(centerX, centerY, radius, angleInDegrees) {
+  var angleInRadians = (angleInDegrees-90) * Math.PI / 180.0;
 
+  return {
+    x: centerX + (radius * Math.cos(angleInRadians)),
+    y: centerY + (radius * Math.sin(angleInRadians))
+  };
+}
 
+function describeArc(x, y, radius, startAngle, endAngle){
+
+    var start = polarToCartesian(x, y, radius, endAngle);
+    var end = polarToCartesian(x, y, radius, startAngle);
+
+    var arcSweep = endAngle - startAngle <= 180 ? "0" : "1";
+
+    var d = [
+        "M", start.x, start.y, 
+        "A", radius, radius, 0, arcSweep, 0, end.x, end.y
+    ].join(" ");
+
+    return d;       
+}
