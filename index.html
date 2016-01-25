@@ -1,0 +1,52 @@
+<html>
+<head>
+   <script src='https://cdnjs.cloudflare.com/ajax/libs/svg.js/2.2.5/svg.min.js'></script>
+   <script src='index.js'></script>
+</head>
+<body>
+   <div id='wheel-div'>
+      <!--<svg id='lunch-wheel' width='500' height='500'>
+         <circle cx='250' cy='250' r='240' stroke='green' stroke-width='4' fill='yellow' />
+         <polygon points="200,10 250,190" style="fill:lime;stroke:purple;stroke-width:1" />
+         <line x1='250' y1='250' x2='500' y2='500' style='stroke:rgb(250, 0, 0); strokie-width:2' />
+      </svg> -->
+   </div>
+
+   <script>
+
+      function makeLine(x1, y1, x2, y2) {
+         var line = makeEl('line');
+         setAttr(line, 'x1', x1);
+         setAttr(line, 'y1', y1);
+         setAttr(line, 'x2', x2);
+         setAttr(line, 'y2', y2);
+         setAttr(line, 'style', 'stroke:rgb(250, 0, 0); stroke-width:2');
+         return line;
+      }
+ 
+      //var wheelEl = d.getElementById('lunch-wheel');
+      //var wheel = wheelEl.contentDocument;
+
+      var wheelEl = makeEl('svg');
+      setAttr(wheelEl, 'width', '500');
+      setAttr(wheelEl, 'height', '500');
+
+      var line = makeLine('250', '250', '300', '300');
+      append(wheelEl, line);
+
+      var wheelDiv = getById('wheel-div');
+      append(wheelDiv, wheelEl);
+     </script>
+
+   <!-- <?xml version="1.0" encoding="utf-8" ?> -->
+   <!--
+      <svg id="drawing" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" >
+         <script type="text/javascript">
+            var draw = SVG('drawing')
+            //draw.rect(100,100).animate().radius(100, 100).animate().fill('#f03').move(100,100)
+         </script>
+      </svg>
+   -->
+
+</body>
+</html>
