@@ -9,20 +9,52 @@
    </div>
 
    <script>
-      var wheelEl = makeEl('svg', {'width':1000, 'height':800});
+      var wheelEl = makeEl('svg', {'width':1000, 'height':600});
 
       /*var line = makeLine(250, 250, 253, 253);
       append(wheelEl, line);*/
 
-      //makeLineDegree(wheelEl, 300, 300, 200, 30);
+      function makePie(places) {
+         var colors = ['purple', 'yellow', 'blue', 'pink'];
+         var currColorI = 0;
 
-      makeArc(wheelEl, 300, 300, 200, 30, 180, 'purple');
+         var totalWeight = 0;
+         for (var name in places)
+            totalWeight += places[name];
+         
+         var prevAngle = 0;
 
-      makeArc(wheelEl, 300, 300, 200, 0, 20, 'yellow');
+         for (var name in places) {
+            var weight = places[name];
+            var nextSize = weight/totalWeight * 360;
+            var endAngle = prevAngle + nextSize;
+            var color = colors[currColorI++];
+            makeArc(wheelEl, 300, 300, 200, prevAngle, endAngle, color);
+
+
+            var transform = 'rotate(30 20,40)';
+            var textEl = makeText(wheelEl, name, 300, 300, 'red', transform);
+            prevAngle = endAngle;
+         }
+
+      }
+
+      var places = {
+         'Artisan'      : 30,
+         'Subway'       : 20,
+         'Jimmy Jones'  : 60,
+         'Asian'        : 50
+      };
+      makePie(places);
+
+
+      /*makeArc(wheelEl, 300, 300, 200, 30, 180, 'purple');
+
+      makeArc(wheelEl, 300, 300, 200, 0, 20, 'yellow'); */
+
 
       var wheelDiv = getById('wheel-div');
       append(wheelDiv, wheelEl);
      </script>
-
 </body>
 </html>

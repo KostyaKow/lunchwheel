@@ -75,11 +75,17 @@ function makeArc(container, x, y, radius, startAngle, endAngle, color) {
       'stroke-width':2
    };
    var arc = makeEl('path', attrs);
+
    append(container, arc);
    return arc;
 }
 
-
+function makeText(container, text, x, y, fill, transform) {
+   var textEl = makeEl('text', {'x':x, 'y':y, 'fill':fill, 'transform':transform});
+   textEl.textContent = text;
+   append(container, textEl);
+   return textEl;
+}
 
 /*function describeArc(x, y, radius, startAngle, endAngle){
 
