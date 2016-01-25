@@ -1,3 +1,15 @@
+good svg path tutorial
+   https://developer.mozilla.org/en-US/docs/Web/SVG/Tutorial/Paths
+   https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/d
+   https://www.w3.org/TR/SVG/paths.html#PathDataEllipticalArcCommands
+   http://www.svgbasics.com/arcs.html
+
+sprinf lib
+   https://github.com/alexei/sprintf.js
+
+getElementById('svgId').contentDocument
+   you can append stuff to here
+
 
 svg
    circle
@@ -16,4 +28,15 @@ svg
    line
       attrs
          x1, y1, x2, y2
+   path
+      d
+         M/m   = move to
+         L x y = line 
+         H x   = horizontal
+         V y   = vertical
+         A ... = arc
+arc notes
+   A radius-x,radius-y rotation-x large-arc-f,sweep-flag x y
+      sweep-flag flip
+
 
