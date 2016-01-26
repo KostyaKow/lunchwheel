@@ -102,4 +102,35 @@ function makeText(container, text, x, y, fill, transform) {
     return d;       
 }*/
 
+var app = angular.module('foodwheel', []);
+app.controller('foodwheel', function($scope) {  
+   $scope.places = {
+      'Artisan'      : 30,
+      'Subway'       : 20,
+      'Jimmy Jones'  : 60,
+      'Asian'        : 50,
+      'Irish'        : 30,
+      'Soylent'      : 50,
+
+      'Irishsd'      : 10,
+      'Soylentadf'   : 30,
+      'Irixh'        : 30,
+      'Soyfent'      : 50,
+   }
+
+   $scope.remove = (name) => {
+      delete $scope.places[name];
+   }
+
+   $scope.$watch('places', function(newVal, oldVal) {
+      makePie($scope.places);
+   }, true);
+
+   $scope.keyPress = (event) =>{
+      if (event.keyCode == 13)
+         alert('hi');
+   }
+});
+
+
 

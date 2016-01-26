@@ -1,3 +1,6 @@
+inspiration
+   https://blog.bramp.net/post/2011/07/27/html5-canvas-lunch-wheel/
+
 good svg path tutorial
    https://developer.mozilla.org/en-US/docs/Web/SVG/Tutorial/Paths
    https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/d
