@@ -109,6 +109,10 @@ function range(start, end, step) {
    return ret;
 }
 
+function getRandom(min, max) {
+  return Math.floor(Math.random() * (max - min)) + min;
+}
+
 var app = angular.module('foodwheel', []);
 app.controller('foodwheel', function($scope) {  
    $scope.places = {
@@ -141,11 +145,12 @@ app.controller('foodwheel', function($scope) {
 
    $scope.spin = function() {
       var i = 0;
+      var spinAmount = getRandom(100, 400);
       function f() {
          window.setTimeout(() => {
             $('#wheel-div').css('transform', sprintf('rotate(%ideg)', i++));
             $('#wheel-div').css('transform-origin', "300px 300px");
-            if (i < 400)
+            if (i < spinAmount)
                f();
          }, 2);
       }
