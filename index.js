@@ -37,7 +37,7 @@ function makeLine(x1, y1, x2, y2) {
    var attrs = {
       'x1': x1, 'y1': y1,
       'x2': x2, 'y2': y2,
-      'style': 'stroke:rgb(250, 0, 0); stroke-width:2'
+      'style': 'stroke:rgb(250, 0, 0); stroke-width:10'
    };
    var line = makeEl('line', attrs);
    return line;
@@ -102,6 +102,13 @@ function makeText(container, text, x, y, fill, transform) {
     return d;       
 }*/
 
+function range(start, end, step) {
+   var ret = [];
+   while (start <= end)
+      ret.push((start+=step)-5);
+   return ret;
+}
+
 var app = angular.module('foodwheel', []);
 app.controller('foodwheel', function($scope) {  
    $scope.places = {
@@ -111,12 +118,9 @@ app.controller('foodwheel', function($scope) {
       'Asian'        : 50,
       'Irish'        : 30,
       'Soylent'      : 50,
-
-      'Irishsd'      : 10,
-      'Soylentadf'   : 30,
-      'Irixh'        : 30,
-      'Soyfent'      : 50,
    }
+
+   $scope.numbers = range(10, 100, 5);
 
    $scope.remove = (name) => {
       delete $scope.places[name];
@@ -126,10 +130,28 @@ app.controller('foodwheel', function($scope) {
       makePie($scope.places);
    }, true);
 
-   $scope.keyPress = (event) =>{
-      if (event.keyCode == 13)
+   /*$scope.keyPress = (event) =>{
+      if (event.which == 13)
          alert('hi');
+   }*/
+   $scope.add = function() {
+      $scope.places[$scope.placeName] = $scope.placeWeight;
+      return 1;
    }
+
+   $scope.spin = function() {
+      var i = 0;
+      function f() {
+         window.setTimeout(() => {
+            $('#wheel-div').css('transform', sprintf('rotate(%ideg)', i++));
+            $('#wheel-div').css('transform-origin', "300px 300px");
+            if (i < 400)
+               f();
+         }, 2);
+      }
+      f();
+   }
+
 });
 
 
