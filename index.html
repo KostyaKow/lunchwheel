@@ -7,6 +7,10 @@
    <script src='https://cdnjs.cloudflare.com/ajax/libs/sprintf/1.0.3/sprintf.js'></script>
    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
 
+   <script>
+      places = {};
+   </script>
+
    <script src='index.js'></script>
 </head>
 <body ng-app='foodwheel' ng-controller='foodwheel' ng-keypress='keyPress($event)' style='overflow:hidden'>
@@ -36,20 +40,82 @@
       </line>
    </svg>
 
-   <div style='position:absolute;left:0;top:0;height:100%;width:100%;' id='map'>yo</div>
+   <!-- <div style='position:absolute;left:0;top:0;height:100%;width:100%;' id='map'>yo</div> -->
+   <div style='height:0;width:0' id='map'></div>
 
    <script>
-      var map;
-      function initMap() {
-        map = new google.maps.Map(document.getElementById('map'), {
-          center: {lat: -34.397, lng: 150.644},
-          zoom: 8
-        });
+      ready = false;
+
+
+      function initialize() {
+         ready = true;
       }
 
-      //service = new google.maps.places.PlacesService(map);
-      //service.nearbySearch(request, callback);    
- 
+      function success(position, callback_kk) {
+            /*var map;
+         function initMap() {
+           map = new google.maps.Map(document.getElementById('map'), {
+             center: {lat: -34.397, lng: 150.644},
+             zoom: 8
+           });
+         }*/
+
+         var map;
+         var service;
+         var infowindow;
+
+         function initialize() {
+            //var otownZip = new google.maps.LatLng(28.6498000,-81.2110000);
+            var otownZip = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+
+           map = new google.maps.Map(document.getElementById('map'), {
+               center: otownZip,
+               zoom: 15
+           });
+
+           var request = {
+             location: otownZip,
+             radius: '500',
+             types: ['food']
+           };
+
+           service = new google.maps.places.PlacesService(map);
+           service.nearbySearch(request, callback);
+         }
+
+         function callback(results, status) {
+           if (status == google.maps.places.PlacesServiceStatus.OK) {
+             for (var i = 0; i < results.length; i++) {
+               var place = results[i];
+               console.log(place);
+               //createMarker(results[i]);
+             }
+             callback_kk(results);
+           }
+         }
+
+         if (ready)
+            initialize();
+         else error();
+         //service = new google.maps.places.PlacesService(map);
+         //service.nearbySearch(request, callback);    
+         
+      }
+      function error() {
+         alert('geolocation not supported');
+      }
+
+      function start(callback) {      
+         function success_return(position) {
+            success(position, callback);
+         }
+         if (navigator.geolocation)
+            navigator.geolocation.getCurrentPosition(success_return, error);
+         else
+            error();
+      }
+
+///////////////////////////// 
 
       var colors = ['purple', 'yellow', 'blue', 'pink', 'orange', 'green', 'brown'];
       var currColorIndex = 0;
@@ -98,7 +164,7 @@
 
       // libraries=places
      </script>
-    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDt3Wxu6tBs-CHgTp88x5VB3270RRx9sd8&callback=initMap"
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDt3Wxu6tBs-CHgTp88x5VB3270RRx9sd8&callback=initialize&libraries=places"
   type="text/javascript"></script>
 
 </body>

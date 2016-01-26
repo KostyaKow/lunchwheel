@@ -115,14 +115,27 @@ function getRandom(min, max) {
 
 var app = angular.module('foodwheel', []);
 app.controller('foodwheel', function($scope, $http) {  
-   $scope.places = {
+   /*$scope.places = {
       'Artisan'      : 30,
       'Subway'       : 20,
       'Jimmy Jones'  : 60,
       'Asian'        : 50,
       'Irish'        : 30,
       'Soylent'      : 50,
-   }
+   }*/
+   $scope.places = {};
+ 
+   $scope.setPlaces = (geoPlaces) => {
+      //alert(JSON.stringify($scope.places));
+      for (var food in geoPlaces) {
+         $scope.places[geoPlaces[food].name] = 10;
+         console.log(geoPlaces[food].name);
+      }
+      //alert(JSON.stringify($scope.places));
+      $scope.$apply();
+   } 
+   start($scope.setPlaces);
+
    $scope.numbers = range(10, 100, 5);
 
    $scope.remove = (name) => {
