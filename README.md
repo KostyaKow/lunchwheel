@@ -7,6 +7,9 @@ good svg path tutorial
    https://www.w3.org/TR/SVG/paths.html#PathDataEllipticalArcCommands
    http://www.svgbasics.com/arcs.html
 
+https://developers.google.com/maps/documentation/javascript/places#place_search_requests
+https://developers.google.com/maps/documentation/javascript/places
+
 sprinf lib
    https://github.com/alexei/sprintf.js
 
