@@ -5,7 +5,9 @@
    * https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/d
    * https://www.w3.org/TR/SVG/paths.html#PathDataEllipticalArcCommands
    * http://www.svgbasics.com/arcs.html
-* https://developers.google.com/maps/documentation/javascript/places
+* google API
+   https://console.developers.google.com/apis/credentials
+   https://developers.google.com/maps/documentation/javascript/places
 * sprinf lib
    * https://github.com/alexei/sprintf.js
 * getElementById('svgId').contentDocument
@@ -37,5 +39,4 @@
 * arc notes
    * A radius-x,radius-y rotation-x,large-arc-f,sweep-flag x y
       * sweep-flag flip
-
 
