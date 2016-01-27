@@ -1,21 +1,15 @@
 * inspiration
    * https://blog.bramp.net/post/2011/07/27/html5-canvas-lunch-wheel/
-
 * good svg path tutorial
    * https://developer.mozilla.org/en-US/docs/Web/SVG/Tutorial/Paths
    * https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/d
    * https://www.w3.org/TR/SVG/paths.html#PathDataEllipticalArcCommands
    * http://www.svgbasics.com/arcs.html
-
 * https://developers.google.com/maps/documentation/javascript/places
-
 * sprinf lib
    * https://github.com/alexei/sprintf.js
-
 * getElementById('svgId').contentDocument
    * you can append stuff to here
-
-
 * svg
    * circle
       * attrs
