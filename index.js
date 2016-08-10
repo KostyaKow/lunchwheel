@@ -12,10 +12,10 @@ function setAttr(el, attr, value) {
 function makeEl(type, attrs) {
    var xmlns = "http://www.w3.org/2000/svg";
    var el = d.createElementNS(xmlns, type);
-   
+
    if (attrs != undefined) {
       for (var key in attrs)
-         setAttr(el, key, attrs[key]);         
+         setAttr(el, key, attrs[key]);
    }
 
    return el;
@@ -59,13 +59,13 @@ function describeArc(x, y, radius, startAngle, endAngle){
     var l1 = deg(x, y, radius, startAngle);
 
     var d = [
-      "M", start.x, start.y, 
+      "M", start.x, start.y,
       "A", radius, radius, 0, arcSweep, 0, end.x, end.y,
       "L", x, y,
       "L", start.x, start.y
     ].join(" ");
 
-    return d;       
+    return d;
 }
 function makeArc(container, x, y, radius, startAngle, endAngle, color) {
    var attrs = {
@@ -95,11 +95,11 @@ function makeText(container, text, x, y, fill, transform) {
     var arcSweep = endAngle - startAngle <= 180 ? "0" : "1";
 
     var d = [
-        "M", start.x, start.y, 
+        "M", start.x, start.y,
         "A", radius, radius, 0, arcSweep, 0, end.x, end.y
     ].join(" ");
 
-    return d;       
+    return d;
 }*/
 
 function range(start, end, step) {
@@ -114,7 +114,7 @@ function getRandom(min, max) {
 }
 
 var app = angular.module('foodwheel', []);
-app.controller('foodwheel', function($scope, $http) {  
+app.controller('foodwheel', function($scope, $http) {
    /*$scope.places = {
       'Artisan'      : 30,
       'Subway'       : 20,
@@ -124,7 +124,7 @@ app.controller('foodwheel', function($scope, $http) {
       'Soylent'      : 50,
    }*/
    $scope.places = {};
- 
+
    $scope.setPlaces = (geoPlaces) => {
       //alert(JSON.stringify($scope.places));
       for (var food in geoPlaces) {
@@ -133,7 +133,7 @@ app.controller('foodwheel', function($scope, $http) {
       }
       //alert(JSON.stringify($scope.places));
       $scope.$apply();
-   } 
+   }
    start($scope.setPlaces);
 
    $scope.numbers = range(10, 100, 5);
@@ -170,6 +170,4 @@ app.controller('foodwheel', function($scope, $http) {
    }
 
 });
-
-
 
