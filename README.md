@@ -1,3 +1,10 @@
+
+This is a small project that uses Google API to scan for restaurants in your area and generates SVG of a wheel with every restaurant on it. For indecisive people like me, it also lets you spin the wheel to pick a place, so you don't have to decide yourself.
+
+You can also add options manually if your browser doesn't support geolocation.
+
+Uses AngularJS
+
 * inspiration
    * https://blog.bramp.net/post/2011/07/27/html5-canvas-lunch-wheel/
 * good svg path tutorial
@@ -32,7 +39,7 @@
    * path
       * d
          * M/m   = move to
-         * L x y = line 
+         * L x y = line
          * H x   = horizontal
          * V y   = vertical
          * A ... = arc
